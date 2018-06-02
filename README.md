@@ -1,4 +1,7 @@
+[![Build Status](https://travis-ci.org/tmcnicol/tennis_scoring.svg?branch=master)](https://travis-ci.org/tmcnicol/tennis_scoring)
+
 ### Description
+
 Score a single set of a Tennis match
 
 ### Requirements
