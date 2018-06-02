@@ -149,6 +149,9 @@ class TestMatch(unittest.TestCase):
         )
 
     def test_tiebreaker(self):
+        """
+        Sets the scores to 6 all and then runs through a full tie break.
+        """
         # Adds 6 games to both players scores
         for i in range(5 * POINTS_TO_WIN_GAME):
             self.match.point_won_by(self.players[0])

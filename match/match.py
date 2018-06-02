@@ -49,6 +49,10 @@ class Match:
         }
 
     def point_won_by(self, winner):
+        """
+        Increment the point based on the winner of the
+        point and the current state of the match.
+        """
         if self.tiebreaker:
             self.player_scores[winner]['tiebreak_points'] += 1
         else:
@@ -94,7 +98,7 @@ class Match:
     def score(self):
         """Generate a string of the current match score.
 
-        String is returned in the from 0-0, 15, 40
+        String is returned in the form '0-0, 15-40'
         """
         player_a_games = self.player_scores[self.player_a]['games']
         player_b_games = self.player_scores[self.player_b]['games']
