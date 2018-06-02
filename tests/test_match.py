@@ -4,7 +4,7 @@ import unittest
 from match.match import Match
 
 POINTS_TO_WIN_GAME = 4
-NUMBER_OF_POINTS_TO_WIN_SET = 24
+POINTS_TO_WIN_SET = 24
 
 class TestMatch(unittest.TestCase):
     def setUp(self):
@@ -30,25 +30,25 @@ class TestMatch(unittest.TestCase):
 
         Tests both player_a and player_b
         """
-        EXPECTED_SCORES = [
-            [
+        EXPECTED_SCORES = {
+            self.players[0]: [
                 "0-0, 0-0",
                 "0-0, 15-0",
                 "0-0, 30-0",
                 "0-0, 40-0",
                 "1-0, 0-0",
             ],
-            [
+            self.players[1]: [
                 "0-0, 0-0",
                 "0-0, 0-15",
                 "0-0, 0-30",
                 "0-0, 0-40",
                 "0-1, 0-0",
-            ]
-        ]
+            ],
+        }
 
-        for i, player in enumerate(self.players):
-            for expected_score in EXPECTED_SCORES[i]:
+        for player in self.players:
+            for expected_score in EXPECTED_SCORES[player]:
                 self.assertEqual(
                     self.match.score(),
                     expected_score,
@@ -94,7 +94,7 @@ class TestMatch(unittest.TestCase):
     def test_set_win(self):
         """Checks that a set can be won by each player."""
         # Player 1
-        for i in range(NUMBER_OF_POINTS_TO_WIN_SET - 1):
+        for i in range(POINTS_TO_WIN_SET - 1):
             self.match.point_won_by(self.players[0])
         self.assertEqual(
             self.match.score(),
@@ -108,7 +108,7 @@ class TestMatch(unittest.TestCase):
         )
 
         # Player 2
-        for i in range(NUMBER_OF_POINTS_TO_WIN_SET - 1):
+        for i in range(POINTS_TO_WIN_SET - 1):
             self.match.point_won_by(self.players[1])
         self.assertEqual(
             self.match.score(),
